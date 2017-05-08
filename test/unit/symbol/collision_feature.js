@@ -55,6 +55,29 @@ test('CollisionFeature', (t) => {
         t.end();
     });
 
+    test('boxes for handling pitch underzooming have scale < 1', (t) => {
+        const line = [new Point(0, 0), new Point(500, 100), new Point(510, 90), new Point(700, 0)];
+        const anchor = new Anchor(505, 95, 0, 1);
+        const cf = new CollisionFeature(collisionBoxArray, line, anchor, 0, 0, 0, shapedText, 1, 0, true);
+        const maxScales = pluckMaxScales(cf);
+        t.deepEqual(maxScales, [
+            0.9090909361839294,
+            0.9900000095367432,
+            1.4285714626312256,
+            2,
+            3.3333332538604736,
+            10,
+            Infinity,
+            10,
+            3.3333332538604736,
+            2,
+            1.4285714626312256,
+            1.1111111640930176,
+            0.9090909361839294,
+            0.7692307829856873]);
+        t.end();
+    });
+
     test('vertical line label', (t) => {
         const line = [new Point(0, 0), new Point(0, 100), new Point(0, 111), new Point(0, 112), new Point(0, 200)];
         const anchor = new Anchor(0, 110, 0, 1);
@@ -138,6 +161,14 @@ test('CollisionFeature', (t) => {
         const result = [];
         for (let i = cf.boxStartIndex; i < cf.boxEndIndex; i++) {
             result.push(collisionBoxArray.get(i).anchorPoint);
+        }
+        return result;
+    }
+
+    function pluckMaxScales(cf) {
+        const result = [];
+        for (let i = cf.boxStartIndex; i < cf.boxEndIndex; i++) {
+            result.push(collisionBoxArray.get(i).maxScale);
         }
         return result;
     }

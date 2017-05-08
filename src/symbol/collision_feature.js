@@ -72,7 +72,7 @@ class CollisionFeature {
     _addLineCollisionBoxes(collisionBoxArray, line, anchor, segment, labelLength, boxSize, featureIndex, sourceLayerIndex, bucketIndex) {
         const step = boxSize / 2;
         const nBoxes = Math.floor(labelLength / step);
-        // We calculate line collision boxes out to 125% of what would normally be our
+        // We calculate line collision boxes out to 150% of what would normally be our
         // max size, to allow collision detection to work on labels that expand as
         // they move into the distance
         const nPitchPaddingBoxes = Math.floor(nBoxes / 4);
