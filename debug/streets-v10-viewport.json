@@ -28,8 +28,8 @@
   "sources": {
     "composite": { "url": "mapbox://mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7", "type": "vector" }
   },
-  "sprite": "mapbox://sprites/chrisloer/cj0a1kgqm00322sqvjozgaenf",
-  "glyphs": "mapbox://fonts/chrisloer/{fontstack}/{range}.pbf",
+  "sprite": "mapbox://sprites/streets-v10",
+  "glyphs": "mapbox://fonts/streets-v10/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
