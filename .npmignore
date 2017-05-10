@@ -5,3 +5,4 @@ debug
 docs
 test
 .nyc_output
+.idea/
