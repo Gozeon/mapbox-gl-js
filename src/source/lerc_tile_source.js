@@ -94,10 +94,10 @@ class LercSource extends Evented {
 
             var img = dom.create('canvas', 'tmp-canvas');
             img.decodedPixels = LercDecode.decode(data.data);
-            var width = img.decodedPixels.width;
-            img.width = width;
-            var height = img.decodedPixels.height;
-            img.height = height;
+            var width = img.decodedPixels.width - 1;
+            img.width = width + 1;
+            var height = img.decodedPixels.height - 1;
+            img.height = height + 1;
             var min = img.decodedPixels.statistics[0].minValue;
             var max = img.decodedPixels.statistics[0].maxValue;
             var pixels = img.decodedPixels.pixels[0];
