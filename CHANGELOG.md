@@ -1,5 +1,9 @@
 ## master
 
+## 0.38.0
+
+- Add Lerc Source
+
 ## 0.37.0 (May 2nd, 2017)
 
 #### :warning: Breaking changes
