@@ -92,6 +92,10 @@ class LercSource extends Evented {
                 return callback(err);
             }
 
+            if (data.data.byteLength === 47) {
+                return;
+            }
+
             var img = dom.create('canvas', 'tmp-canvas');
             img.decodedPixels = LercDecode.decode(data.data);
             var width = img.decodedPixels.width - 1;
