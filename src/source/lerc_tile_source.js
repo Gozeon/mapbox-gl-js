@@ -92,6 +92,7 @@ class LercSource extends Evented {
                 return callback(err);
             }
 
+            // http 404 {"error":{"code":404,"message":"No this file"}} 长度47
             if (data.data.byteLength === 47) {
                 return;
             }
