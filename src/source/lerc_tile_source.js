@@ -120,8 +120,6 @@ class LercSource extends Evented {
             }
             ctx.putImageData(imageData, 0, 0);
 
-            console.log(img)
-
             if (this.map._refreshExpiredTiles) tile.setExpiryData(img);
             delete img.cacheControl;
             delete img.expires;
