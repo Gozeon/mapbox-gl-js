@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='./dist/mapbox-gl-dev.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ296ZSIsImEiOiJjaXg4ZTNycncwMDBhMm9xZmF1dXBqOW8zIn0.aqHVTtTUFWHMKAGMWvqd9Q';
+        // var tileset = 'mapbox.streets';
+        // var map = new mapboxgl.Map({
+        //     container: 'map', // container id
+        //     style: {
+        //         "version": 8,
+        //         "sources": {
+        //             "raster-tiles": {
+        //                 "type": "lerc",
+        //                 "url": "mapbox://" + tileset,
+        //                 "tileSize": 256
+        //             }
+        //         },
+        //         "layers": [{
+        //             "id": "simple-tiles",
+        //             "type": "lerc",
+        //             "source": "raster-tiles",
+        //             "minzoom": 0,
+        //             "maxzoom": 22
+        //         }]
+        //     },
+        //     center: [-74.50, 40], // starting position
+        //     zoom: 2 // starting zoom
+        // });
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/basic-v9', //stylesheet location
+            zoom: 1,
+            center: [91.67817089511277, 9.910246150845026]
+        });
+
+        map.on('load', function () {
+
+            map.addSource('museums', {
+                type: 'lerc',
+                // url: 'https://api.gagogroup.cn/api/v3/ndvi/2017/3/28/${z}/${x}/${y}?token=gdc_longrun'
+                // tiles: ['http://139.219.226.232:5000/maps/shuyeland/{z}/{x}/{y}/land.png'],
+                // tiles: ['https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer/tile/{z}/{x}/{y}'],
+                tiles: ['https://api.gagogroup.cn/api/v3/ndvi/2017/3/28/${z}/${x}/${y}?token=gdc_longrun'],
+                tileSize: 256
+            });
+            map.addLayer({
+                'id': 'museums',
+                'type': 'raster',
+                'source': 'museums'
+            });
+        });
+
+
+        // var tileset = 'mapbox.streets';
+        // var map = new mapboxgl.Map({
+        //     container: 'map', // container id
+        //     style: {
+        //         "version": 8,
+        //         "sources": {
+        //             "raster-tiles": {
+        //                 "type": "raster",
+        //                 "url": "https://api.gagogroup.cn/api/v3/ndvi/2017/3/28/${z}/${x}/${y}?token=gdc_longrun",
+        //                 "tileSize": 256
+        //             }
+        //         },
+        //         "layers": [{
+        //             "id": "simple-tiles",
+        //             "type": "raster",
+        //             "source": "raster-tiles",
+        //             "minzoom": 0,
+        //             "maxzoom": 9
+        //         }]
+        //     },
+        //     center: [-74.50, 40], // starting position
+        //     zoom: 2 // starting zoom
+        // });
+    </script>
+
+</body>
+
+</html>
